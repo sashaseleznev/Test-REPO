@@ -1,0 +1,46 @@
+1.6#sh ver
+Active-image: flash://system/images/mes3300-4016-8R1.ros
+  Version: 4.0.16.8
+  Commit: 8429c372
+  Build: 1 (master)
+  MD5 Digest: c846439384356b86bcb740fff6be7792
+  Date: 13-Dec-2021
+  Time: 12:06:59
+Inactive-image: flash://system/images/mes3300-4016-4R3.ros
+  Version: 4.0.16.4
+  Commit: 3973f564
+  Build: 3 (master)
+  MD5 Digest: 942c1e87e1534bf8c3e4e7e18f695532
+  Date: 24-Sep-2021
+  Time: 14:00:56
+
+=======================================================
+
+1.6#show system
+System Description:                       MES2348B 52-port 1G/10G Managed Switch
+
+=======================================================
+
+1.6#sh int statu
+                                             Flow Link           Uptime       Back   Mdix
+Port     Type         Duplex  Speed Neg      ctrl State         (d,h:m:s)   Pressure Mode    Port Mode (VLAN)
+-------- ------------ ------  ----- -------- ---- ----------- ------------- -------- ------- ------------------------
+gi1/0/1  1G-Copper    Full    1000  Enabled  Off  Up          01,13:08:37   Disabled On      Access (101)
+gi1/0/2  1G-Copper    Full    1000  Enabled  Off  Up          05,13:18:04   Disabled Off     Access (102)
+...
+gi2/0/8  1G-Copper    Full    1000  Enabled  Off  Up          05,13:17:57   Disabled On      Access (156)
+gi2/0/9  1G-Copper    Full    1000  Enabled  Off  Up          05,13:17:56   Disabled Off     Access (157)
+gi2/0/10 1G-Copper    Full    1000  Enabled  Off  Up          02,02:16:26   Disabled Off     Access (158)
+gi2/0/11 1G-Copper      --      --     --     --  Down (nc)         --         --     --     Access (159)
+...
+
+1.6#test cable-diagnostics tdr int gi 2/0/10
+Some ports has status of link UP. Continuing test can break links. Proceed?  (Y/N)[Y] Y
+.......................
+ Port     Pair Result              Length [m] Date
+--------- ---- ------------------- ---------- --------------------------
+gi2/0/10  1-2          OK              --     29-Dec-2021 17:54:50
+          3-6          OK              --
+          4-5         Open             43
+          7-8         Open             42
+1.6#
